@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsabilités du Délégué à la Protection des Données (DPO)</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --text: #2c3e50;
+            --border: #bdc3c7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 3rem 2rem;
+        }
+
+        .toc {
+            background: var(--light);
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            border-radius: 8px;
+        }
+
+        .toc h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .toc ul {
+            list-style: none;
+        }
+
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-ref {
+            background: #fff3cd;
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: #d1ecf1;
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box strong {
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        .requirement-list {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .requirement-list ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .requirement-list li::before {
+            content: "✓ ";
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        .incompatible-list li::before {
+            content: "❌ ";
+            margin-right: 0.5rem;
+        }
+
+        .example-box {
+            background: #f8f9fa;
+            border: 2px solid var(--border);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+
+        .example-box strong {
+            color: var(--dark);
+        }
+
+        .checklist {
+            background: white;
+            border: 2px solid var(--success);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .checklist h3 {
+            color: var(--success);
+            margin-top: 0;
+        }
+
+        .checklist ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li::before {
+            content: "☐ ";
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+            color: var(--success);
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .contact-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .contact-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: var(--light);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+
+        .badge-mandatory {
+            background: var(--accent);
+            color: white;
+        }
+
+        .badge-optional {
+            background: var(--success);
+            color: white;
+        }
+
+        .badge-protection {
+            background: var(--warning);
+            color: white;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .content {
+                padding: 2rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--secondary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Responsabilités du Délégué à la Protection des Données (DPO)</h1>
+            <p>Basé sur la Loi n° 1.565 du 3 décembre 2024 relative à la protection des données personnelles</p>
+        </header>
+
+        <div class="content">
+            <nav class="toc">
+                <h2>Table des matières</h2>
+                <ul>
+                    <li><a href="#overview">Vue d'Ensemble</a></li>
+                    <li><a href="#missions">1. Missions Principales du DPO</a></li>
+                    <li><a href="#qualifications">2. Qualifications Requises</a></li>
+                    <li><a href="#designation">3. Désignation Obligatoire du DPO</a></li>
+                    <li><a href="#moyens">4. Moyens et Indépendance du DPO</a></li>
+                    <li><a href="#relations">5. Relations avec les Personnes Concernées</a></li>
+                    <li><a href="#confidentialite">6. Confidentialité et Conflits d'Intérêts</a></li>
+                    <li><a href="#publication">7. Publication des Coordonnées</a></li>
+                    <li><a href="#registre">8. Rôle du DPO dans le Registre des Activités</a></li>
+                    <li><a href="#violation">9. Rôle du DPO dans la Notification de Violation</a></li>
+                    <li><a href="#dpia">10. Rôle du DPO dans les DPIA</a></li>
+                    <li><a href="#risque">11. Prise en Compte du Risque</a></li>
+                    <li><a href="#association">12. Association aux Décisions</a></li>
+                    <li><a href="#checklist">13. Synthèse : Checklist des Responsabilités</a></li>
+                    <li><a href="#sanctions">14. Sanctions et Responsabilités</a></li>
+                    <li><a href="#contact">15. Contact APDP</a></li>
+                </ul>
+            </nav>
+
+            <section id="overview">
+                <h2>Vue d'Ensemble</h2>
+                <p>Le Délégué à la Protection des Données (DPO) est un acteur clé de la conformité RGPD à Monaco. Cette fonction peut être obligatoire ou facultative selon les circonstances définies par la loi.</p>
+            </section>
+
+            <section id="missions">
+                <h2>1. MISSIONS PRINCIPALES DU DPO</h2>
+                <div class="article-ref">Article 28 - Missions du Délégué à la Protection des Données</div>
+
+                <h3>1.1 Information et Conseil</h3>
+                <div class="article-ref">Article 28, alinéa 1 - chiffre 1</div>
+                <div class="highlight-box">
+                    <strong>Le DPO est chargé d'informer et conseiller :</strong>
+                    <ul>
+                        <li>Le responsable du traitement ou le sous-traitant</li>
+                        <li>Les employés qui procèdent au traitement</li>
+                    </ul>
+                    <p><strong>Sur :</strong> Les obligations qui leur incombent en vertu de la Loi n° 1.565</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Implication pratique :</strong>
+                    <ul>
+                        <li>Formation continue du personnel</li>
+                        <li>Conseils sur les nouvelles obligations légales</li>
+                        <li>Interprétation des exigences RGPD Monaco</li>
+                        <li>Support aux équipes opérationnelles</li>
+                    </ul>
+                </div>
+
+                <h3>1.2 Contrôle de la Conformité</h3>
+                <div class="article-ref">Article 28, alinéa 1 - chiffre 2</div>
+                <div class="highlight-box">
+                    <strong>Le DPO contrôle le respect de :</strong>
+                    <ul>
+                        <li>La présente loi en matière de protection des données personnelles</li>
+                        <li>Les règles internes du responsable du traitement ou du sous-traitant</li>
+                    </ul>
+                    <p><strong>Y compris :</strong></p>
+                    <ul>
+                        <li>La répartition des responsabilités</li>
+                        <li>La sensibilisation du personnel</li>
+                        <li>La formation du personnel participant aux opérations de traitement</li>
+                        <li>Les audits s'y rapportant</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <strong>Implication pratique :</strong>
+                    <ul>
+                        <li>Audits réguliers de conformité</li>
+                        <li>Vérification des procédures internes</li>
+                        <li>Surveillance des traitements de données</li>
+                        <li>Documentation des contrôles effectués</li>
+                    </ul>
+                </div>
+
+                <h3>1.3 Conseil sur les Analyses d'Impact (DPIA)</h3>
+                <div class="article-ref">Article 28, alinéa 1 - chiffre 3</div>
+                <p>Le DPO <strong>dispense des conseils, sur demande</strong>, en ce qui concerne l'analyse d'impact relative à la protection des données personnelles (DPIA).</p>
+                <p><em>Référence croisée : Articles 35 et 36 sur les DPIA</em></p>
+
+                <div class="example-box">
+                    <strong>Implication pratique :</strong>
+                    <ul>
+                        <li>Évaluation des risques pour les nouveaux traitements</li>
+                        <li>Conseil sur les mesures d'atténuation</li>
+                        <li>Validation méthodologique des DPIA</li>
+                        <li>Recommandations sur les traitements à haut risque</li>
+                    </ul>
+                </div>
+
+                <h3>1.4 Coopération avec l'APDP</h3>
+                <div class="article-ref">Article 28, alinéa 1 - chiffre 4</div>
+                <p>Le DPO <strong>coopère avec l'autorité de protection</strong> (APDP) et est le <strong>correspondant</strong> de l'APDP sur les questions relatives au traitement.</p>
+
+                <div class="example-box">
+                    <strong>Implication pratique :</strong>
+                    <ul>
+                        <li>Point de contact principal pour l'APDP</li>
+                        <li>Facilite les inspections et contrôles</li>
+                        <li>Répond aux demandes de l'autorité</li>
+                        <li>Assure la liaison entre l'organisation et l'APDP</li>
+                    </ul>
+                </div>
+
+                <h3>1.5 Présentation des Demandes d'Avis</h3>
+                <div class="article-ref">Article 28, alinéa 1 - chiffre 5</div>
+                <p>Le DPO <strong>présente à l'autorité de protection les demandes d'avis</strong> lorsqu'elles portent sur un traitement visé aux articles 64 et 77.</p>
+            </section>
+
+            <section id="qualifications">
+                <h2>2. QUALIFICATIONS REQUISES</h2>
+                <div class="article-ref">Article 28, alinéa 2</div>
+
+                <h3>2.1 Critères de Désignation</h3>
+                <p>Le DPO est désigné sur la base de :</p>
+
+                <div class="requirement-list">
+                    <ul>
+                        <li><strong>Qualités professionnelles</strong>
+                            <ul style="margin-left: 2rem; list-style: disc;">
+                                <li>Expérience avérée en protection des données</li>
+                                <li>Compétences managériales</li>
+                                <li>Capacité d'analyse et de synthèse</li>
+                            </ul>
+                        </li>
+                        <li><strong>Connaissances spécialisées</strong>
+                            <ul style="margin-left: 2rem; list-style: disc;">
+                                <li>Droit en matière de protection des données</li>
+                                <li>Pratiques en matière de protection des données</li>
+                                <li>Connaissance approfondie de la Loi n° 1.565</li>
+                                <li>Maîtrise du cadre juridique monégasque</li>
+                            </ul>
+                        </li>
+                        <li><strong>Capacité à accomplir les missions</strong>
+                            <ul style="margin-left: 2rem; list-style: disc;">
+                                <li>Aptitude à remplir les 5 missions listées à l'Article 28</li>
+                                <li>Compétences en communication</li>
+                                <li>Capacité à gérer des situations complexes</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h3>2.2 Statut du DPO</h3>
+                <div class="article-ref">Article 28, alinéa 3</div>
+                <p>Le DPO peut être :</p>
+                <ul>
+                    <li><strong>Un membre du personnel</strong> du responsable du traitement ou du sous-traitant (DPO interne)</li>
+                    <li><strong>Un prestataire externe</strong> exerçant ses missions sur la base d'un contrat de service (DPO externalisé)</li>
+                </ul>
+            </section>
+
+            <section id="designation">
+                <h2>3. DÉSIGNATION OBLIGATOIRE DU DPO</h2>
+                <div class="article-ref">Article 29 - Désignation du Délégué à la Protection des Données</div>
+
+                <p><strong>Exception préalable :</strong> Les juridictions et le ministère public dans l'exercice de leurs fonctions juridictionnelles ne sont <strong>pas</strong> soumis à cette obligation.</p>
+
+                <div class="highlight-box">
+                    <strong>La désignation du DPO est OBLIGATOIRE lorsque :</strong>
+                </div>
+
+                <h3>Cas 1 : Autorités et Organismes Publics</h3>
+                <div class="article-ref">Article 29, alinéa 1 - chiffre 1</div>
+                <span class="badge badge-mandatory">OBLIGATOIRE</span>
+                <p>Le traitement est effectué par :</p>
+                <ul>
+                    <li>Une personne morale de droit public</li>
+                    <li>Une personne morale de droit privé investie d'une mission d'intérêt général</li>
+                    <li>Un concessionnaire d'un service public</li>
+                </ul>
+
+                <h3>Cas 2 : Suivi Régulier et Systématique à Grande Échelle</h3>
+                <div class="article-ref">Article 29, alinéa 1 - chiffre 2</div>
+                <span class="badge badge-mandatory">OBLIGATOIRE</span>
+                <p>Les activités de base du responsable du traitement ou du sous-traitant consistent en des opérations de traitement qui :</p>
+                <ul>
+                    <li>Du fait de leur <strong>nature</strong>, <strong>portée</strong> ou <strong>finalités</strong></li>
+                    <li>Exigent un <strong>suivi régulier et systématique à grande échelle</strong> des personnes concernées</li>
+                </ul>
+
+                <div class="example-box">
+                    <strong>Exemples :</strong>
+                    <ul>
+                        <li>Surveillance vidéo à grande échelle</li>
+                        <li>Profilage comportemental</li>
+                        <li>Marketing ciblé massif</li>
+                        <li>Géolocalisation systématique</li>
+                    </ul>
+                </div>
+
+                <h3>Cas 3 : Traitement à Grande Échelle de Données Sensibles</h3>
+                <div class="article-ref">Article 29, alinéa 1 - chiffre 3</div>
+                <span class="badge badge-mandatory">OBLIGATOIRE</span>
+                <p>Les activités de base consistent en un traitement à grande échelle de :</p>
+                <ul>
+                    <li><strong>Données sensibles</strong> (Article 2 : origines, santé, biométrie, etc.)</li>
+                    <li><strong>Données relatives à des condamnations pénales ou à des infractions</strong></li>
+                </ul>
+
+                <div class="example-box">
+                    <strong>Exemples :</strong>
+                    <ul>
+                        <li>Hôpitaux et établissements de santé</li>
+                        <li>Organismes traitant des données judiciaires</li>
+                        <li>Systèmes de contrôle d'accès biométrique à grande échelle</li>
+                    </ul>
+                </div>
+
+                <h3>DPO Mutualisé</h3>
+                <div class="article-ref">Article 29, alinéas 2 et 3</div>
+                <span class="badge badge-optional">OPTIONNEL</span>
+
+                <p><strong>Pour plusieurs organismes publics :</strong></p>
+                <ul>
+                    <li>Un seul DPO peut être désigné pour plusieurs personnes morales de droit public</li>
+                    <li>Ou plusieurs personnes morales de droit privé investies d'une mission d'intérêt général</li>
+                    <li><strong>Condition :</strong> Tenir compte de leur structure organisationnelle et de leur taille</li>
+                </ul>
+
+                <p><strong>Pour un groupe d'entreprises :</strong></p>
+                <ul>
+                    <li>Un groupe d'entreprises peut désigner un seul DPO</li>
+                    <li><strong>Condition :</strong> Il doit être <strong>facilement joignable</strong> à partir de chaque lieu d'établissement</li>
+                </ul>
+            </section>
+
+            <section id="moyens">
+                <h2>4. MOYENS ET INDÉPENDANCE DU DPO</h2>
+                <div class="article-ref">Article 30 - Position du Délégué à la Protection des Données</div>
+
+                <h3>4.1 Ressources Nécessaires</h3>
+                <div class="article-ref">Article 30, alinéa 1</div>
+                <p>Le responsable du traitement et le sous-traitant doivent fournir au DPO :</p>
+
+                <div class="requirement-list">
+                    <ul>
+                        <li><strong>Ressources matérielles et humaines</strong>
+                            <ul style="margin-left: 2rem; list-style: disc;">
+                                <li>Budget adéquat</li>
+                                <li>Personnel de support si nécessaire</li>
+                                <li>Outils et systèmes d'information</li>
+                                <li>Espace de travail approprié</li>
+                            </ul>
+                        </li>
+                        <li><strong>Accès aux données et opérations</strong>
+                            <ul style="margin-left: 2rem; list-style: disc;">
+                                <li>Accès aux données à caractère personnel</li>
+                                <li>Accès aux opérations de traitement</li>
+                                <li>Exception : Traitements visés à l'article 91 (sécurité nationale, défense)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Formation continue</strong>
+                            <ul style="margin-left: 2rem; list-style: disc;">
+                                <li>Formation permettant d'entretenir ses connaissances spécialisées</li>
+                                <li>Participation à des conférences et séminaires</li>
+                                <li>Veille juridique et réglementaire</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h3>4.2 Indépendance Totale</h3>
+                <div class="article-ref">Article 30, alinéa 1</div>
+                <span class="badge badge-protection">PROTECTION LÉGALE</span>
+                <div class="highlight-box">
+                    <strong>Le DPO agit en toute indépendance :</strong>
+                    <ul>
+                        <li><strong>Ne reçoit d'instructions d'aucune autorité</strong> en ce qui concerne l'exercice de ses missions</li>
+                        <li>Autonomie décisionnelle sur les questions de protection des données</li>
+                        <li>Pas de subordination hiérarchique dans l'exercice de ses missions</li>
+                    </ul>
+                </div>
+
+                <h3>4.3 Protection contre les Sanctions</h3>
+                <div class="article-ref">Article 30, alinéa 2</div>
+                <span class="badge badge-protection">PROTECTION LÉGALE</span>
+                <div class="highlight-box">
+                    <strong>Le DPO ne peut être :</strong>
+                    <ul>
+                        <li><strong>Relevé de ses fonctions</strong> pour l'exercice de ses missions</li>
+                        <li><strong>Pénalisé</strong> par le responsable du traitement ou le sous-traitant pour l'exercice de ses missions</li>
+                    </ul>
+                    <p><strong>Garantie de stabilité :</strong></p>
+                    <ul>
+                        <li>Protection contre le licenciement lié à l'exercice des missions</li>
+                        <li>Protection contre les mesures disciplinaires injustifiées</li>
+                        <li>Sécurité de l'emploi dans le cadre de ses fonctions</li>
+                    </ul>
+                </div>
+
+                <h3>4.4 Rattachement Hiérarchique</h3>
+                <div class="article-ref">Article 30, alinéa 2</div>
+                <p>Le DPO <strong>fait directement rapport au niveau le plus élevé de la direction</strong> :</p>
+                <ul>
+                    <li>Rattachement à la direction générale</li>
+                    <li>Communication directe avec le comité de direction</li>
+                    <li>Accès aux instances décisionnelles</li>
+                </ul>
+            </section>
+
+            <section id="relations">
+                <h2>5. RELATIONS AVEC LES PERSONNES CONCERNÉES</h2>
+                <div class="article-ref">Article 30, alinéa 3</div>
+
+                <h3>5.1 Point de Contact</h3>
+                <div class="highlight-box">
+                    <strong>Les personnes concernées peuvent prendre contact avec le DPO</strong> au sujet de :
+                    <ul>
+                        <li>Toutes les questions relatives au traitement de leurs données à caractère personnel</li>
+                        <li>L'exercice des droits que leur confère la présente loi</li>
+                    </ul>
+                </div>
+
+                <p><strong>Droits concernés (Chapitre III) :</strong></p>
+                <ul>
+                    <li>Droit d'accès (Article 12)</li>
+                    <li>Droit de rectification (Article 13)</li>
+                    <li>Droit à l'effacement (Article 14)</li>
+                    <li>Droit à la limitation (Article 15)</li>
+                    <li>Droit d'opposition (Article 17)</li>
+                    <li>Droit à la portabilité (Article 18)</li>
+                    <li>Droits relatifs aux décisions automatisées (Article 19)</li>
+                    <li>Droits des personnes décédées (Article 20)</li>
+                </ul>
+
+                <div class="example-box">
+                    <strong>Implication pratique :</strong>
+                    <ul>
+                        <li>Canal de communication accessible</li>
+                        <li>Réponse aux demandes d'information</li>
+                        <li>Support pour l'exercice des droits</li>
+                        <li>Médiation entre l'organisation et les personnes concernées</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="confidentialite">
+                <h2>6. CONFIDENTIALITÉ ET CONFLITS D'INTÉRÊTS</h2>
+
+                <h3>6.1 Obligation de Confidentialité</h3>
+                <div class="article-ref">Article 30, alinéa 4</div>
+                <p>Le DPO est soumis à une <strong>obligation de confidentialité</strong> en ce qui concerne l'exercice de ses missions, <strong>indépendamment</strong> des règles de secret professionnel de l'article 308 du Code pénal.</p>
+
+                <div class="example-box">
+                    <strong>Implication :</strong>
+                    <ul>
+                        <li>Protection des informations sensibles</li>
+                        <li>Confidentialité des audits et contrôles</li>
+                        <li>Secret des échanges avec l'APDP</li>
+                        <li>Discrétion sur les violations découvertes</li>
+                    </ul>
+                </div>
+
+                <h3>6.2 Cumul de Fonctions</h3>
+                <div class="article-ref">Article 30, alinéa 5</div>
+                <p>Le DPO <strong>peut exécuter d'autres missions et tâches</strong>, <strong>MAIS</strong> le responsable du traitement ou le sous-traitant veillent à ce que ces missions et tâches <strong>n'entraînent pas de conflit d'intérêts</strong>.</p>
+
+                <div class="requirement-list incompatible-list">
+                    <strong>Fonctions incompatibles (exemples) :</strong>
+                    <ul>
+                        <li>Directeur informatique (décide des moyens de traitement)</li>
+                        <li>Responsable marketing (détermine les finalités)</li>
+                        <li>Directeur RH (traite des données sensibles des employés)</li>
+                        <li>Directeur financier (peut avoir intérêt à limiter les investissements en protection des données)</li>
+                    </ul>
+                </div>
+
+                <p><strong>Principe :</strong> Le DPO ne peut pas se contrôler lui-même</p>
+            </section>
+
+            <section id="publication">
+                <h2>7. PUBLICATION DES COORDONNÉES</h2>
+                <div class="article-ref">Article 30, alinéa 6</div>
+
+                <h3>7.1 Obligation de Publication</h3>
+                <p>Le responsable du traitement ou le sous-traitant doivent :</p>
+
+                <div class="requirement-list">
+                    <ul>
+                        <li><strong>Publier</strong> les coordonnées professionnelles du DPO
+                            <ul style="margin-left: 2rem; list-style: disc;">
+                                <li>Sur le site web de l'organisation</li>
+                                <li>Dans la politique de confidentialité</li>
+                                <li>Dans les notices d'information aux personnes concernées</li>
+                            </ul>
+                        </li>
+                        <li><strong>Communiquer</strong> à l'autorité de protection (APDP)
+                            <ul style="margin-left: 2rem; list-style: disc;">
+                                <li>Notification à l'APDP de la désignation</li>
+                                <li>Mise à jour en cas de changement</li>
+                                <li>Coordonnées complètes et à jour</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <p><strong>Coordonnées à publier :</strong></p>
+                <ul>
+                    <li>Nom du DPO (ou raison sociale si externalisé)</li>
+                    <li>Adresse postale</li>
+                    <li>Adresse e-mail dédiée</li>
+                    <li>Numéro de téléphone</li>
+                    <li>Formulaire de contact (optionnel mais recommandé)</li>
+                </ul>
+            </section>
+
+            <section id="registre">
+                <h2>8. RÔLE DU DPO DANS LE REGISTRE DES ACTIVITÉS</h2>
+                <div class="article-ref">Article 27 - Registre des Activités de Traitement</div>
+
+                <h3>8.1 Mention dans le Registre</h3>
+                <div class="article-ref">Article 27, alinéa 2 - chiffre 1</div>
+                <p>Le registre des activités de traitement doit contenir :</p>
+                <ul>
+                    <li>Le nom et les coordonnées du <strong>délégué à la protection des données</strong> (si désigné)</li>
+                </ul>
+
+                <p><strong>Pour le responsable du traitement :</strong></p>
+                <ul>
+                    <li>Nom et coordonnées du DPO dans le registre du responsable</li>
+                </ul>
+
+                <p><strong>Pour le sous-traitant (Article 27, alinéa 4 - chiffre 1) :</strong></p>
+                <ul>
+                    <li>Nom et coordonnées du DPO dans le registre du sous-traitant</li>
+                </ul>
+
+                <h3>8.2 Rôle de Conseil</h3>
+                <p>Le DPO conseille sur :</p>
+                <ul>
+                    <li>La tenue du registre des activités</li>
+                    <li>Les éléments à documenter</li>
+                    <li>La mise à jour régulière</li>
+                    <li>La présentation à l'APDP sur demande</li>
+                </ul>
+            </section>
+
+            <section id="violation">
+                <h2>9. RÔLE DU DPO DANS LA NOTIFICATION DE VIOLATION</h2>
+                <div class="article-ref">Article 32 - Notification à l'Autorité de Protection</div>
+
+                <h3>9.1 Point de Contact pour les Violations</h3>
+                <div class="article-ref">Article 32, I - alinéa 2 - chiffre 2</div>
+                <p>La notification de violation à l'APDP doit préciser :</p>
+                <ul>
+                    <li>Le nom et les coordonnées du <strong>délégué à la protection des données</strong> (lorsque celui-ci a été désigné)</li>
+                    <li><strong>OU</strong> d'un autre point de contact auprès duquel des informations supplémentaires peuvent être obtenues</li>
+                </ul>
+
+                <div class="example-box">
+                    <strong>Rôle du DPO :</strong>
+                    <ul>
+                        <li>Point de contact privilégié pour l'APDP</li>
+                        <li>Coordination de la gestion de crise</li>
+                        <li>Validation des notifications de violation</li>
+                        <li>Conseil sur les mesures correctives</li>
+                    </ul>
+                </div>
+
+                <h3>9.2 Délai de 72 Heures</h3>
+                <div class="article-ref">Article 32, I - alinéa 1</div>
+                <div class="highlight-box">
+                    <strong>Le responsable du traitement doit notifier à l'APDP dans les 72 heures maximum</strong> après avoir pris connaissance de la violation.
+                </div>
+
+                <div class="example-box">
+                    <strong>Implication pour le DPO :</strong>
+                    <ul>
+                        <li>Disponibilité et réactivité</li>
+                        <li>Procédures d'escalade rapides</li>
+                        <li>Préparation de templates de notification</li>
+                        <li>Coordination avec les équipes IT et juridiques</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="dpia">
+                <h2>10. RÔLE DU DPO DANS LES DPIA</h2>
+                <div class="article-ref">Articles 35 et 36 - Analyse d'Impact</div>
+
+                <h3>10.1 Conseil Préalable</h3>
+                <div class="article-ref">Article 35, alinéa 1</div>
+                <p>Le responsable du traitement effectue une DPIA <strong>après avoir pris conseil auprès du délégué à la protection des données</strong> (lorsque celui-ci a été désigné).</p>
+
+                <div class="example-box">
+                    <strong>Conseil du DPO sur :</strong>
+                    <ul>
+                        <li>La nécessité d'une DPIA</li>
+                        <li>La méthodologie à appliquer</li>
+                        <li>L'évaluation des risques</li>
+                        <li>Les mesures d'atténuation</li>
+                        <li>La proportionnalité du traitement</li>
+                    </ul>
+                </div>
+
+                <h3>10.2 Consultation de l'APDP</h3>
+                <div class="article-ref">Article 36, alinéa 2 - chiffre 1</div>
+                <p>Lors de la consultation préalable de l'APDP, le responsable du traitement communique les coordonnées du <strong>délégué à la protection des données</strong> (lorsque celui-ci a été désigné).</p>
+
+                <div class="example-box">
+                    <strong>Rôle du DPO :</strong>
+                    <ul>
+                        <li>Préparation du dossier de consultation</li>
+                        <li>Interlocuteur avec l'APDP</li>
+                        <li>Suivi des recommandations de l'autorité</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="risque">
+                <h2>11. PRISE EN COMPTE DU RISQUE</h2>
+                <div class="article-ref">Article 28, alinéa 4</div>
+
+                <h3>11.1 Approche Basée sur le Risque</h3>
+                <p>Le DPO <strong>tient compte du risque</strong> associé aux opérations de traitement :</p>
+                <ul>
+                    <li>Compte tenu de la <strong>nature</strong> du traitement</li>
+                    <li>Compte tenu de la <strong>portée</strong> du traitement</li>
+                    <li>Compte tenu du <strong>contexte</strong> du traitement</li>
+                    <li>Compte tenu des <strong>finalités</strong> du traitement</li>
+                </ul>
+
+                <div class="example-box">
+                    <strong>Implication :</strong>
+                    <ul>
+                        <li>Priorisation des actions de conformité</li>
+                        <li>Allocation des ressources en fonction des risques</li>
+                        <li>Vigilance accrue pour les traitements à haut risque</li>
+                        <li>Adaptation des contrôles aux enjeux</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="association">
+                <h2>12. ASSOCIATION AUX DÉCISIONS</h2>
+                <div class="article-ref">Article 28, alinéa 5</div>
+
+                <h3>12.1 Participation aux Décisions</h3>
+                <div class="highlight-box">
+                    <strong>Le responsable du traitement et le sous-traitant veillent à ce que le DPO soit associé :</strong>
+                    <ul>
+                        <li><strong>D'une manière appropriée</strong></li>
+                        <li><strong>En temps utile</strong></li>
+                        <li>À <strong>toutes les questions</strong> relatives à la protection des données à caractère personnel</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <strong>Concrètement :</strong>
+                    <ul>
+                        <li>Consultation sur les nouveaux projets</li>
+                        <li>Participation aux comités de direction sur les sujets data</li>
+                        <li>Validation des décisions impactant la protection des données</li>
+                        <li>Information préalable aux changements majeurs</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="checklist">
+                <h2>13. SYNTHÈSE : CHECKLIST DES RESPONSABILITÉS DU DPO</h2>
+
+                <div class="checklist">
+                    <h3>✅ Missions Quotidiennes</h3>
+                    <ul>
+                        <li>Informer et conseiller l'organisation sur les obligations RGPD</li>
+                        <li>Former et sensibiliser le personnel</li>
+                        <li>Contrôler la conformité des traitements</li>
+                        <li>Tenir à jour la documentation de conformité</li>
+                        <li>Répondre aux questions des personnes concernées</li>
+                    </ul>
+                </div>
+
+                <div class="checklist">
+                    <h3>✅ Missions Stratégiques</h3>
+                    <ul>
+                        <li>Conseiller sur les analyses d'impact (DPIA)</li>
+                        <li>Participer aux décisions sur les nouveaux traitements</li>
+                        <li>Évaluer les risques pour les droits et libertés</li>
+                        <li>Développer la culture de protection des données</li>
+                    </ul>
+                </div>
+
+                <div class="checklist">
+                    <h3>✅ Relations Externes</h3>
+                    <ul>
+                        <li>Être le point de contact avec l'APDP</li>
+                        <li>Coopérer avec l'autorité de protection</li>
+                        <li>Présenter les demandes d'avis à l'APDP</li>
+                        <li>Gérer les inspections et contrôles</li>
+                    </ul>
+                </div>
+
+                <div class="checklist">
+                    <h3>✅ Gestion de Crise</h3>
+                    <ul>
+                        <li>Coordonner la gestion des violations de données</li>
+                        <li>Préparer les notifications à l'APDP (72h)</li>
+                        <li>Conseiller sur les communications aux personnes concernées</li>
+                        <li>Documenter les incidents et mesures correctives</li>
+                    </ul>
+                </div>
+
+                <div class="checklist">
+                    <h3>✅ Documentation et Reporting</h3>
+                    <ul>
+                        <li>Superviser la tenue du registre des activités</li>
+                        <li>Documenter les contrôles et audits</li>
+                        <li>Rédiger des rapports de conformité</li>
+                        <li>Préparer les dossiers pour l'APDP</li>
+                    </ul>
+                </div>
+
+                <div class="checklist">
+                    <h3>✅ Veille et Formation Continue</h3>
+                    <ul>
+                        <li>Suivre l'évolution de la réglementation</li>
+                        <li>Participer à des formations et conférences</li>
+                        <li>Mettre à jour ses connaissances juridiques et techniques</li>
+                        <li>Partager les bonnes pratiques</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="sanctions">
+                <h2>14. SANCTIONS ET RESPONSABILITÉS</h2>
+
+                <h3>14.1 Protection du DPO</h3>
+                <div class="article-ref">Article 30, alinéa 2</div>
+                <p>Le DPO bénéficie de protections spéciales :</p>
+                <div class="requirement-list">
+                    <ul>
+                        <li>Ne peut pas être licencié pour l'exercice de ses missions</li>
+                        <li>Ne peut pas être pénalisé pour ses recommandations</li>
+                        <li>Indépendance garantie par la loi</li>
+                    </ul>
+                </div>
+
+                <h3>14.2 Responsabilité de l'Organisation</h3>
+                <p><strong>Conséquences du non-respect :</strong></p>
+
+                <p>Si l'organisation ne permet pas au DPO d'exercer ses missions :</p>
+                <ul>
+                    <li>Sanctions administratives de l'APDP (Chapitre VII)</li>
+                    <li>Responsabilité en cas de violation de données</li>
+                    <li>Aggravation des sanctions en cas de contrôle</li>
+                </ul>
+
+                <p><strong>Article 29 - Défaut de désignation obligatoire :</strong></p>
+                <ul>
+                    <li>L'absence de DPO quand il est obligatoire est une violation de la loi</li>
+                    <li>Sanctions possibles de l'APDP</li>
+                </ul>
+            </section>
+
+            <section id="contact">
+                <h2>15. CONTACT APDP</h2>
+                <div class="contact-box">
+                    <h3>Pour toute question sur le rôle du DPO :</h3>
+                    <p><strong>Autorité de Protection des Données Personnelles (APDP)</strong></p>
+                    <p><strong>Adresse :</strong> Le Concorde, 11 rue du Gabian, 98000 Monaco</p>
+                    <p><strong>Téléphone :</strong> (+377) 97 70 22 44</p>
+                    <p><strong>Site Web :</strong> apdp.mc</p>
+                </div>
+            </section>
+
+            <section id="references">
+                <h2>16. RÉFÉRENCES LÉGALES PRINCIPALES</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Article</th>
+                            <th>Sujet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Article 28</strong></td>
+                            <td>Missions du DPO</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Article 29</strong></td>
+                            <td>Désignation obligatoire</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Article 30</strong></td>
+                            <td>Moyens, indépendance et confidentialité</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Article 27</strong></td>
+                            <td>Registre des activités (mention du DPO)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Article 32</strong></td>
+                            <td>Notification de violation (contact DPO)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Article 35</strong></td>
+                            <td>DPIA (conseil du DPO)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Article 36</strong></td>
+                            <td>Consultation APDP (coordonnées DPO)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+
+        <footer>
+            <p><em>Document généré à partir de la Loi n° 1.565 du 3 décembre 2024</em></p>
+            <p><em>Date de création : Janvier 2025</em></p>
+            <p><em>Version : 1.0</em></p>
+        </footer>
+    </div>
+
+    <a href="#" class="back-to-top" title="Retour en haut">↑</a>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Show/hide back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
