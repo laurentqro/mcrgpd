@@ -453,7 +453,7 @@
                 <li>Produire les documents requis (notices de confidentialité, formulaires de consentement, etc.)</li>
                 <li>Créer un plan d'action priorisé avec références aux articles de la loi monégasque</li>
             </ul>
-            <p class="time-estimate">Temps estimé de complétion : 25-35 minutes</p>
+            <p class="time-estimate">Temps estimé de complétion : 30-40 minutes</p>
         </div>
 
         <form id="compliance-form">
@@ -477,6 +477,8 @@
                         <label><input type="checkbox" name="data_disciplinary"> Dossiers disciplinaires</label>
                         <label><input type="checkbox" name="data_attendance"> Relevés de temps et d'assiduité</label>
                         <label><input type="checkbox" name="data_training"> Dossiers de formation et développement</label>
+                        <label><input type="checkbox" name="data_delegates"> Délégués du personnel</label>
+                        <label><input type="checkbox" name="data_social_fund"> Fonds social des employés</label>
                         <label><input type="checkbox" name="data_none"> Aucune des réponses ci-dessus</label>
                     </div>
                 </div>
@@ -548,6 +550,9 @@
                     </div>
                     <div class="form-group">
                         <p><strong>Si vous avez répondu "Oui" à l'une des questions :</strong></p>
+                        <div class="note-box">
+                            <strong>Avertissement APDP :</strong> Le consentement des employés est évalué de manière très stricte dans le contexte de subordination employeur-employé. En raison du déséquilibre de pouvoir inhérent, le consentement ne peut généralement pas être considéré comme "libre" si l'employé ne peut pas refuser sans conséquences sur son emploi. Privilégiez d'autres bases juridiques (obligation légale, intérêt légitime).
+                        </div>
                         <label>Avez-vous un consentement explicite ou une autorisation légale pour ce traitement ?</label>
                         <div class="radio-group">
                             <label><input type="radio" name="sensitive_consent" value="yes"> Oui</label>
@@ -713,11 +718,14 @@
 
                     <div class="form-group">
                         <label>Combien de temps conservez-vous les enregistrements vidéo ?</label>
+                        <div class="note-box">
+                            <strong>Article 84 de la Loi n° 1.565 :</strong> Les enregistrements vidéo doivent être conservés pour une durée maximale de 30 jours.
+                        </div>
                         <div class="radio-group vertical">
                             <label><input type="radio" name="video_retention" value="<7"> Moins de 7 jours</label>
-                            <label><input type="radio" name="video_retention" value="7-30"> 7-30 jours (conforme)</label>
-                            <label><input type="radio" name="video_retention" value="31-90"> 31-90 jours</label>
-                            <label><input type="radio" name="video_retention" value=">90"> Plus de 90 jours</label>
+                            <label><input type="radio" name="video_retention" value="7-30"> 7-30 jours (conforme - Article 84)</label>
+                            <label><input type="radio" name="video_retention" value="31-90"> 31-90 jours (NON CONFORME)</label>
+                            <label><input type="radio" name="video_retention" value=">90"> Plus de 90 jours (NON CONFORME)</label>
                             <label><input type="radio" name="video_retention" value="unsure"> Incertain</label>
                         </div>
                     </div>
@@ -751,6 +759,35 @@
                             <label><input type="radio" name="video_access_logged" value="yes"> Oui</label>
                             <label><input type="radio" name="video_access_logged" value="no"> Non</label>
                             <label><input type="radio" name="video_access_logged" value="partial"> Partiellement</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Vos caméras enregistrent-elles le son (audio) en plus de la vidéo ?</label>
+                        <div class="note-box">
+                            <strong>Attention APDP :</strong> L'enregistrement audio est considéré comme manifestement excessif pour les finalités de sécurité et peut conduire à une surveillance inappropriée. L'APDP est particulièrement vigilante à la justification de l'enregistrement audio.
+                        </div>
+                        <div class="radio-group">
+                            <label><input type="radio" name="video_audio" value="yes"> Oui</label>
+                            <label><input type="radio" name="video_audio" value="no"> Non</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Si oui, quelle est la justification pour l'enregistrement audio ?</label>
+                        <input type="text" name="video_audio_justification" class="text-input" placeholder="Ex: salle d'interrogation pour protéger suspect et personnel">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Avez-vous obtenu une autorisation du Ministre d'État pour la vidéosurveillance dans les lieux publics ou ouverts au public ?</label>
+                        <div class="note-box">
+                            <strong>Article 84 :</strong> La vidéosurveillance des lieux publics ou ouverts au public nécessite une autorisation préalable du Ministre d'État. Pour les lieux non ouverts au public, vous devez porter le dispositif à la connaissance de l'APDP sans délai.
+                        </div>
+                        <div class="radio-group">
+                            <label><input type="radio" name="video_authorization" value="yes"> Oui, autorisation obtenue</label>
+                            <label><input type="radio" name="video_authorization" value="no"> Non</label>
+                            <label><input type="radio" name="video_authorization" value="na"> S/O - lieux non publics uniquement</label>
+                            <label><input type="radio" name="video_authorization" value="declared"> Lieux non publics - porté à connaissance APDP</label>
                         </div>
                     </div>
                 </div>
@@ -951,10 +988,13 @@
 
                     <div class="form-group">
                         <label>Si oui, les employés peuvent-ils désactiver le suivi pendant l'utilisation personnelle ?</label>
+                        <div class="note-box">
+                            <strong>Exigence APDP :</strong> Pour les véhicules professionnels utilisés à des fins privées, les employés DOIVENT pouvoir désactiver la géolocalisation en dehors des heures de travail. Aucune collecte de données ne peut avoir lieu pendant l'utilisation personnelle.
+                        </div>
                         <div class="radio-group">
-                            <label><input type="radio" name="geoloc_disable" value="yes"> Oui</label>
-                            <label><input type="radio" name="geoloc_disable" value="no"> Non</label>
-                            <label><input type="radio" name="geoloc_disable" value="na"> S/O</label>
+                            <label><input type="radio" name="geoloc_disable" value="yes"> Oui (conforme)</label>
+                            <label><input type="radio" name="geoloc_disable" value="no"> Non (NON CONFORME si usage privé autorisé)</label>
+                            <label><input type="radio" name="geoloc_disable" value="na"> S/O - pas d'usage privé autorisé</label>
                         </div>
                     </div>
 
@@ -1164,6 +1204,143 @@
                             <label><input type="radio" name="remote_privacy_sphere" value="no"> Non</label>
                             <label><input type="radio" name="remote_privacy_sphere" value="unsure"> Incertain</label>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3B: OUTILS COLLABORATIFS & ALERTES -->
+            <section class="section">
+                <h2 class="section-title">SECTION 3B : OUTILS DE COLLABORATION & DISPOSITIFS D'ALERTES PROFESSIONNELLES</h2>
+
+                <div class="subsection">
+                    <h3>3B.1 Outils de Communication et Collaboration</h3>
+                    <p><strong>Avez-vous mis en place des outils de collaboration pour vos employés ?</strong></p>
+                    <div class="checkbox-list">
+                        <label><input type="checkbox" name="collab_email"> Messagerie électronique professionnelle</label>
+                        <label><input type="checkbox" name="collab_phone"> Téléphones fixes et/ou mobiles professionnels</label>
+                        <label><input type="checkbox" name="collab_chat"> Messagerie instantanée / Chat (Slack, Teams, etc.)</label>
+                        <label><input type="checkbox" name="collab_video"> Visioconférence (Zoom, Teams, etc.)</label>
+                        <label><input type="checkbox" name="collab_intranet"> Intranet d'entreprise</label>
+                        <label><input type="checkbox" name="collab_shared_drive"> Espaces de partage de fichiers (SharePoint, Google Drive, etc.)</label>
+                        <label><input type="checkbox" name="collab_none"> Aucun outil de collaboration</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Avez-vous documenté ces outils dans votre registre des activités de traitement ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="collab_documented" value="yes"> Oui</label>
+                            <label><input type="radio" name="collab_documented" value="no"> Non</label>
+                            <label><input type="radio" name="collab_documented" value="partial"> Partiellement</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>3B.2 Dispositifs d'Alertes Professionnelles (Whistleblowing)</h3>
+                    <div class="note-box">
+                        <strong>Note réglementaire :</strong> Plusieurs textes monégasques imposent ou encouragent la mise en place de dispositifs d'alertes professionnelles :
+                        <ul style="margin-top: 10px; margin-left: 20px;">
+                            <li>Ordonnance Souveraine n° 1.284 du 10 septembre 2007 modifiée</li>
+                            <li>Loi n° 1.362 du 3 août 2009 relative à la lutte contre le blanchiment de capitaux, le financement du terrorisme et la corruption</li>
+                            <li>Loi n° 1.457 du 12 décembre 2017 relative au harcèlement et à la violence au travail</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Avez-vous mis en place un dispositif d'alertes professionnelles (whistleblowing) ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="whistleblowing" value="yes"> Oui</label>
+                            <label><input type="radio" name="whistleblowing" value="no"> Non</label>
+                            <label><input type="radio" name="whistleblowing" value="planned"> En cours de mise en place</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p><strong>Si oui, pour quels types d'alertes ?</strong></p>
+                        <div class="checkbox-list">
+                            <label><input type="checkbox" name="alert_aml"> Lutte contre le blanchiment de capitaux et financement du terrorisme</label>
+                            <label><input type="checkbox" name="alert_corruption"> Corruption</label>
+                            <label><input type="checkbox" name="alert_harassment"> Harcèlement et violence au travail</label>
+                            <label><input type="checkbox" name="alert_fraud"> Fraude financière</label>
+                            <label><input type="checkbox" name="alert_ethics"> Violations du code d'éthique</label>
+                            <label><input type="checkbox" name="alert_other"> Autres types d'alertes</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Le dispositif garantit-il la confidentialité de l'identité de l'auteur de l'alerte ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="alert_confidentiality" value="yes"> Oui</label>
+                            <label><input type="radio" name="alert_confidentiality" value="no"> Non</label>
+                            <label><input type="radio" name="alert_confidentiality" value="na"> S/O</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Le dispositif permet-il les alertes anonymes ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="alert_anonymous" value="yes"> Oui</label>
+                            <label><input type="radio" name="alert_anonymous" value="no"> Non</label>
+                            <label><input type="radio" name="alert_anonymous" value="na"> S/O</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Avez-vous documenté les garanties de protection des données dans ce dispositif ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="alert_documented" value="yes"> Oui</label>
+                            <label><input type="radio" name="alert_documented" value="no"> Non</label>
+                            <label><input type="radio" name="alert_documented" value="na"> S/O</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quelle est la durée de conservation des données liées aux alertes ?</label>
+                        <input type="text" name="alert_retention" class="text-input" placeholder="Ex: 3 ans après clôture du dossier">
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>3B.3 Réglementations Spécifiques</h3>
+                    <div class="form-group">
+                        <label>Êtes-vous assujetti à la Loi n° 1.362 relative à la lutte contre le blanchiment de capitaux ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="aml_subject" value="yes"> Oui</label>
+                            <label><input type="radio" name="aml_subject" value="no"> Non</label>
+                            <label><input type="radio" name="aml_subject" value="unsure"> Incertain</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Êtes-vous assujetti à l'Ordonnance Souveraine n° 8.664 relative aux procédures de gel des fonds ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="sanctions_subject" value="yes"> Oui</label>
+                            <label><input type="radio" name="sanctions_subject" value="no"> Non</label>
+                            <label><input type="radio" name="sanctions_subject" value="unsure"> Incertain</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Avez-vous mis en place un dispositif d'enregistrement des conversations téléphoniques (pour traçabilité des ordres) ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="call_recording" value="yes"> Oui</label>
+                            <label><input type="radio" name="call_recording" value="no"> Non</label>
+                            <label><input type="radio" name="call_recording" value="na"> Non applicable</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Si oui, avez-vous informé les employés de cet enregistrement ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="call_recording_informed" value="yes"> Oui</label>
+                            <label><input type="radio" name="call_recording_informed" value="no"> Non</label>
+                            <label><input type="radio" name="call_recording_informed" value="na"> S/O</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quelle est la durée de conservation des enregistrements ?</label>
+                        <input type="text" name="call_recording_retention" class="text-input" placeholder="Ex: 6 mois">
                     </div>
                 </div>
             </section>
@@ -1384,9 +1561,179 @@
                 </div>
             </section>
 
-            <!-- Note: Remaining sections would continue here following the same pattern -->
-            <!-- Due to length constraints, I'm showing the structure for the first 4 sections -->
-            <!-- The complete HTML would include all 15 sections from the markdown -->
+            <!-- SECTION 5: CHARTE INFORMATIQUE & POLITIQUES INTERNES -->
+            <section class="section critical">
+                <h2 class="section-title">⭐ SECTION 5 : CHARTE INFORMATIQUE & POLITIQUES INTERNES</h2>
+
+                <div class="subsection">
+                    <h3>5.1 Existence et Contenu de la Charte Informatique</h3>
+                    <div class="note-box">
+                        <strong>Note APDP :</strong> La charte informatique n'est pas obligatoire mais fortement recommandée. Elle établit le cadre des règles d'utilisation des outils informatiques et constitue un code de conduite pour les employés et employeurs.
+                    </div>
+
+                    <div class="form-group">
+                        <label>Avez-vous mis en place une charte informatique ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="it_charter" value="yes"> Oui</label>
+                            <label><input type="radio" name="it_charter" value="no"> Non</label>
+                            <label><input type="radio" name="it_charter" value="planned"> En cours d'élaboration</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>La charte informatique est-elle annexée aux contrats de travail ou au règlement intérieur ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="it_charter_annexed" value="yes"> Oui</label>
+                            <label><input type="radio" name="it_charter_annexed" value="no"> Non</label>
+                            <label><input type="radio" name="it_charter_annexed" value="na"> S/O</label>
+                        </div>
+                    </div>
+
+                    <p><strong>Si oui, votre charte informatique couvre-t-elle les éléments suivants ?</strong></p>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Élément Requis</th>
+                                    <th style="text-align: center;">Oui</th>
+                                    <th style="text-align: center;">Non</th>
+                                    <th style="text-align: center;">Partiellement</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Administration des accès Internet et réseau (login/mot de passe personnels, verrouillage session)</td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_access" value="yes"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_access" value="no"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_access" value="partial"></td>
+                                </tr>
+                                <tr>
+                                    <td>Utilisation messagerie professionnelle (usage privé toléré, identification messages privés, accès en absence)</td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_email" value="yes"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_email" value="no"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_email" value="partial"></td>
+                                </tr>
+                                <tr>
+                                    <td>Utilisation Internet (usage privé toléré, sites bloqués, contrôles éventuels)</td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_internet" value="yes"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_internet" value="no"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_internet" value="partial"></td>
+                                </tr>
+                                <tr>
+                                    <td>Utilisation téléphonique (appels privés tolérés, enregistrements éventuels, téléphone blanc)</td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_phone" value="yes"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_phone" value="no"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_phone" value="partial"></td>
+                                </tr>
+                                <tr>
+                                    <td>Gestion des absences (procédure accès messagerie/poste de travail, suppléant désigné)</td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_absence" value="yes"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_absence" value="no"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_absence" value="partial"></td>
+                                </tr>
+                                <tr>
+                                    <td>Obligation de confidentialité et sécurité pour tous les utilisateurs</td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_confidentiality" value="yes"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_confidentiality" value="no"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_confidentiality" value="partial"></td>
+                                </tr>
+                                <tr>
+                                    <td>Protection des données personnelles (informations Article 11 de la Loi)</td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_data_protection" value="yes"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_data_protection" value="no"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_data_protection" value="partial"></td>
+                                </tr>
+                                <tr>
+                                    <td>Sanctions en cas de non-respect (procédures disciplinaires/judiciaires)</td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_sanctions" value="yes"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_sanctions" value="no"></td>
+                                    <td style="text-align: center;"><input type="radio" name="charter_sanctions" value="partial"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>5.2 Charte Administrateur (Pour Personnel IT)</h3>
+                    <div class="note-box">
+                        <strong>Recommandation APDP :</strong> Une charte distincte pour les administrateurs informatiques est recommandée car ils disposent de droits spéciaux et d'obligations particulières.
+                    </div>
+
+                    <div class="form-group">
+                        <label>Avez-vous des administrateurs informatiques avec droits élevés ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="it_admins" value="yes"> Oui</label>
+                            <label><input type="radio" name="it_admins" value="no"> Non</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Avez-vous établi une charte administrateur distincte ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="admin_charter" value="yes"> Oui</label>
+                            <label><input type="radio" name="admin_charter" value="no"> Non</label>
+                            <label><input type="radio" name="admin_charter" value="na"> S/O</label>
+                        </div>
+                    </div>
+
+                    <p><strong>Si oui, la charte administrateur couvre-t-elle :</strong></p>
+                    <div class="checkbox-list">
+                        <label><input type="checkbox" name="admin_no_personal_access"> Interdiction d'accéder aux données personnelles sauf demande formelle</label>
+                        <label><input type="checkbox" name="admin_confidentiality"> Obligation de respecter la confidentialité</label>
+                        <label><input type="checkbox" name="admin_no_unauthorized"> Interdiction de connexion sans autorisation explicite</label>
+                        <label><input type="checkbox" name="admin_no_abuse"> Interdiction d'abuser des privilèges</label>
+                        <label><input type="checkbox" name="admin_procedures"> Obligation de suivre procédures définies pour modifications</label>
+                        <label><input type="checkbox" name="admin_escalation"> Obligation d'escalader demandes inappropriées à la hiérarchie</label>
+                        <label><input type="checkbox" name="admin_no_bypass"> Interdiction de contourner procédures de sécurité</label>
+                        <label><input type="checkbox" name="admin_traceability"> Obligation de tracer toutes les actions</label>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>5.3 Utilisation Privée des Outils Professionnels</h3>
+                    <div class="form-group">
+                        <label>Tolérez-vous l'utilisation privée des outils professionnels (messagerie, Internet, téléphone) ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="private_use_tolerated" value="yes"> Oui, usage raisonnable toléré</label>
+                            <label><input type="radio" name="private_use_tolerated" value="no"> Non, strictement interdit</label>
+                            <label><input type="radio" name="private_use_tolerated" value="unsure"> Non défini</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Comment les employés identifient-ils les communications privées ?</label>
+                        <div class="checkbox-list">
+                            <label><input type="checkbox" name="private_subject"> Mot-clé dans l'objet (ex: "privé", "[PRV]", "personnel")</label>
+                            <label><input type="checkbox" name="private_folder"> Stockage dans dossier privé (ex: répertoire "personnel")</label>
+                            <label><input type="checkbox" name="private_obvious"> Objet manifestement privé évident (ex: "vacances")</label>
+                            <label><input type="checkbox" name="private_none"> Pas de méthode définie</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Respectez-vous le secret de la correspondance privée (ne pas accéder aux messages identifiés comme privés) ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="private_respect" value="yes"> Oui, principe intangible respecté</label>
+                            <label><input type="radio" name="private_respect" value="no"> Non</label>
+                            <label><input type="radio" name="private_respect" value="unsure"> Incertain</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Avez-vous défini des seuils d'usage privé excessif (temps de connexion, volume) ?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="private_threshold" value="yes"> Oui</label>
+                            <label><input type="radio" name="private_threshold" value="no"> Non</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Si oui, quel est le seuil défini ?</label>
+                        <input type="text" name="private_threshold_value" class="text-input" placeholder="Ex: 30 minutes par jour, 5% du temps de travail">
+                    </div>
+                </div>
+            </section>
 
             <!-- Submit Section -->
             <div class="submit-section">
